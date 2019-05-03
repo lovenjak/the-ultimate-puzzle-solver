@@ -38,7 +38,7 @@ Solutions are stored in `solver.possible_solutions`, a list of `Puzzle` objects.
 Such object can be passed to 
 `generate_svg_views(puzzle_obj, svg_filename_str)`. 
 
-Solution example:
+Solution example:  
 ![](example.jpeg "Example 1.")
 ## TO-DO
 Group solutions differing only on rotations.    
