@@ -1,5 +1,5 @@
 from initialize import *
-from misc import *
+from svg_generator import *
 from puzzle import *
 from copy import deepcopy
 
@@ -43,4 +43,4 @@ if __name__ == "__main__":
         solver.solve()
 
     print("**********")
-    print_solution(solver.possible_solutions[0])
+    generate_svg_solution(solver.possible_solutions[0], 'solution')

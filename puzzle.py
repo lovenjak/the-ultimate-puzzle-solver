@@ -13,7 +13,6 @@ class Puzzle:
         self.next_piece_index = 0
 
     def check_state(self, state, x, y):
-
         # Check piece below:
         piece_down = self.grid[x][y-1]
         if piece_down is None:

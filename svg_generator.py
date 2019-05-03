@@ -144,7 +144,13 @@ def translate_piece_geometry(geometry, translation):
     return translated_geometry
 
 
-def create_svg_solution(solution, filename, scale=100):
+def generate_svg_solution(solution, filename, scale=100):
+    """
+    :param solution: Solution in form of Puzzle object.
+    :param filename: Filename of output SVG file.
+    :param scale: Piece side length in pixels.
+    :return:
+    """
     piece_geometry_factory = PieceGeometryFactory(scale)
     mm = initialize_mapping_matrix()
 
@@ -157,19 +163,10 @@ def create_svg_solution(solution, filename, scale=100):
         piece = solution.grid[x][y]
         piece_geometry = piece_geometry_factory(piece)
 
-        translated_pg = translate_piece_geometry(piece_geometry, (x * scale, y * scale))
+        # Made a bit of mess with coordinate systems: image coordinate system proved to have origin
+        # in upper left corner, while I thought it was in bottom left one. Thus (5 - y).
+        translated_pg = translate_piece_geometry(piece_geometry, (x * scale, (5 - y) * scale))
         pieces_svg.add(dwg.polygon(translated_pg))
 
     dwg.save()
 
-
-if __name__ == "__main__":
-    solver_pickle = open('solver.obj', 'rb')
-    solver = pickle.load(solver_pickle)
-
-    print_solution(solver.possible_solutions[0])
-
-
-    create_svg_solution(solver.possible_solutions[0], "solution2")
-
-    scale = 100

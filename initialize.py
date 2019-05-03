@@ -108,6 +108,6 @@ def initialize_mapping_matrix():
 
     for i in range(1, 5):
         for j in range(1, 5):
-            mm.append([[j],[i]])
+            mm.append([[i], [j]])
 
     return mm
